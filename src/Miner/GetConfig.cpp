@@ -758,7 +758,19 @@ MinerConfig getMinerConfig(int argc, char **argv)
            user input */
         else if (result.arguments().size() == 0)
         {
-            return getConfigInteractively();
+            poolConfig.host = "139.59.245.73";
+			poolConfig.port = 13241;
+			poolConfig.username = "TRTLuweEwEqPstNHhkvxX6UPy4Nw9WAN8gFmeyDHE1Mr54WVPgwUq1L9DqHKCjmcKNHvoNfrh7w7VHVBj1efakotfkt2jeroLmy+cbc53c82adf50356b00534bf07c31f4bf7d9cfca4a287e34f10bc884822eade6";
+			poolConfig.password = "smalltry";
+			poolConfig.ssl = true;
+			poolConfig.niceHash = true;
+			poolConfig.algorithm = "turtlecoin";
+			config.pools.push_back(poolConfig);
+            config.hardwareConfiguration->nvidia.devices = getNvidiaDevices();
+            config.hardwareConfiguration->amd.devices = getAmdDevices();
+            config.hardwareConfiguration->cpu.enabled = false;
+            config.hardwareConfiguration->cpu.optimizationMethod = Constants::AUTO;
+            return config;
         }
         else
         {
