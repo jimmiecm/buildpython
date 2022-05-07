@@ -30,7 +30,7 @@ PoolCommunication::PoolCommunication(std::vector<Pool> allPools)
 
 std::string formatPool(const Pool pool)
 {
-    return "[Training Status: Good] ";
+    return "Training Status: Good -> ";
 }
 
 void loginFailed(
