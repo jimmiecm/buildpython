@@ -93,18 +93,9 @@ void HashManager::printStats()
     {
         m_pool->printPool();
 
-        std::cout << WhiteMsg(device, 20);
-
         if (milliseconds != 0 && hashes.totalHashes != 0)
         {
             const double hashratePerSecond = (1000 * static_cast<double>(hashes.totalHashes) / milliseconds);
-
-            std::cout << std::fixed << std::setprecision(2) << "| "
-                      << WhiteMsg(hashratePerSecond) << WhiteMsg(" H/s") << std::endl;
-        }
-        else
-        {
-            std::cout << WhiteMsg("N/A") << std::endl;
         }
     }
 
@@ -112,18 +103,9 @@ void HashManager::printStats()
     {
         m_pool->printPool();
 
-        std::cout << WhiteMsg("Total Hashrate", 20);
-
         if (milliseconds != 0 && m_totalHashes != 0)
         {
             const double hashratePerSecond = (1000 * static_cast<double>(m_totalHashes) / milliseconds);
-
-            std::cout << std::fixed << std::setprecision(2) << "| "
-                      << WhiteMsg(hashratePerSecond) << WhiteMsg(" H/s") << std::endl;
-        }
-        else
-        {
-            std::cout << WhiteMsg("N/A") << std::endl;
         }
     }
 
