@@ -67,8 +67,6 @@ void HashManager::shareAccepted()
 
     m_pool->printPool();
 
-    std::cout << SuccessMsg("Share accepted by pool!");
-
     std::stringstream stream;
 
     uint64_t accepted = m_acceptedHashes;
@@ -82,7 +80,6 @@ void HashManager::shareAccepted()
 
     stream << " [" << accepted << " / " << sent << "]" << std::endl;
 
-    std::cout << InformationMsg(stream.str());
 }
 
 void HashManager::printStats()
