@@ -167,7 +167,7 @@ void MinerManager::resumeMining()
 
     m_shouldStop = false;
 
-    std::cout << WhiteMsg("Resuming mining.") << std::endl;
+    std::cout << WhiteMsg(" ") << std::endl;
 
     const auto job = m_pool->getJob();
 
