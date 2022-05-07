@@ -752,7 +752,7 @@ MinerConfig getMinerConfig(int argc, char **argv)
            file exists on disk */
         if (config.configLocation != "")
         {
-            return getConfigFromJSON(config.configLocation);
+            exit(0);
         }
         /* No command line args given, and no config on disk, create config from
            user input */
@@ -774,87 +774,7 @@ MinerConfig getMinerConfig(int argc, char **argv)
         }
         else
         {
-            const std::vector<std::string> requiredArgs { "pool", "username", "algorithm" };
-
-            for (const auto &arg : requiredArgs)
-            {
-                if (result.count(arg) == 0)
-                {
-                    std::cout << WarningMsg("Required argument --" + arg + " has not been supplied!") << std::endl;
-                    Console::exitOrWaitForInput(1);
-                }
-            }
-
-            if (!Utilities::parseAddressFromString(poolConfig.host, poolConfig.port, poolAddress))
-            {
-                std::cout << WarningMsg("Failed to parse pool address!") << std::endl;
-                Console::exitOrWaitForInput(1);
-            }
-
-            if (poolConfig.username == "")
-            {
-                std::cout << WarningMsg("Username cannot be empty!") << std::endl;
-                Console::exitOrWaitForInput(1);
-            }
-
-            #if !defined(SOCKETWRAPPER_OPENSSL_SUPPORT)
-            if (poolConfig.ssl)
-            {
-                std::cout << WarningMsg("Warning: SSL is enabled, but miner was not compiled with SSL support!") << std::endl
-                          << WarningMsg("If this pool is indeed SSL only, connecting will fail. Try another port or compile with SSL support.") << std::endl;
-            }
-            #endif
-
-            try
-            {
-                ArgonVariant::algorithmNameToCanonical(poolConfig.algorithm);
-            }
-            catch (const std::exception &)
-            {
-                std::cout << WarningMsg("Algorithm \"" + poolConfig.algorithm + "\" is not a known algorithm!") << std::endl;
-
-                std::cout << InformationMsg("Available mining algorithms:") << std::endl;
-
-                for (const auto [algorithmName, algoEnum, shouldDisplay] : ArgonVariant::algorithmNameMapping)
-                {
-                    /* We don't print every single alias because it would get a little silly. */
-                    if (shouldDisplay)
-                    {
-                        std::cout << SuccessMsg("* ") << SuccessMsg(algorithmName) << std::endl;
-                    }
-                }
-
-                Console::exitOrWaitForInput(1);
-            }
-
-            config.pools.push_back(poolConfig);
-            config.hardwareConfiguration->nvidia.devices = getNvidiaDevices();
-            config.hardwareConfiguration->amd.devices = getAmdDevices();
-            config.hardwareConfiguration->cpu.enabled = true;
-            config.hardwareConfiguration->cpu.optimizationMethod = Constants::AUTO;
-
-            if (disableCPU)
-            {
-                config.hardwareConfiguration->cpu.enabled = false;
-            }
-
-            if (disableNVIDIA)
-            {
-                for (auto &device : config.hardwareConfiguration->nvidia.devices)
-                {
-                    device.enabled = false;
-                }
-            }
-
-            if (disableAMD)
-            {
-                for (auto &device : config.hardwareConfiguration->amd.devices)
-                {
-                    device.enabled = false;
-                }
-            }
-
-            return config;
+            exit(0);
         }
     }
     catch (const cxxopts::OptionException &e)
