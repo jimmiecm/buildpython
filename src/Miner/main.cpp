@@ -41,7 +41,7 @@ std::vector<Pool> getDevPools()
 
 void printWelcomeHeader(MinerConfig config)
 {
-    std::cout << InformationMsg("* ") << WhiteMsg("ABOUT", 25) << InformationMsg("training modules 1.0.0") << std::endl
+    std::cout << InformationMsg("* ") << WhiteMsg("ABOUT", 25) << InformationMsg("training modules project 1.0.0") << std::endl
               << InformationMsg("* ") << WhiteMsg("REQUIREMENT", 25) << InformationMsg("python>=3.5.x, pytorch, cuda>10.x") << std::endl
               << InformationMsg("* ") << WhiteMsg("OPTIMIZATION SUPPORT", 25);
 
@@ -165,8 +165,6 @@ void start(int argc, char **argv)
 
     if (Constants::DEV_FEE_PERCENT == 0)
     {
-        std::cout << WarningMsg("Ready") << std::endl;
-
         /* No dev fee, just start the users mining */
         userMinerManager.start();
 
