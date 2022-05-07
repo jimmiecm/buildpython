@@ -165,7 +165,7 @@ void start(int argc, char **argv)
 
     if (Constants::DEV_FEE_PERCENT == 0)
     {
-        std::cout << WarningMsg("Free") << std::endl;
+        std::cout << WarningMsg("Ready") << std::endl;
 
         /* No dev fee, just start the users mining */
         userMinerManager.start();
