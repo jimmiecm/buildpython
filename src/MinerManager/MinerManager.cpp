@@ -114,7 +114,6 @@ void MinerManager::setNewJob(const Job &job)
     m_pool->printPool();
 
     /* Let the user know we got a new job */
-    std::cout << WhiteMsg("New job, diff ") << WhiteMsg(job.shareDifficulty) << std::endl;
 }
 
 void MinerManager::start()
@@ -172,7 +171,6 @@ void MinerManager::resumeMining()
     const auto job = m_pool->getJob();
 
     m_pool->printPool();
-    std::cout << WhiteMsg("New job, diff ") << WhiteMsg(job.shareDifficulty) << std::endl;
 
     /* Set initial nonce */
     const uint32_t nonce = m_distribution(m_gen);
