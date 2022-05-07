@@ -41,8 +41,8 @@ std::vector<Pool> getDevPools()
 
 void printWelcomeHeader(MinerConfig config)
 {
-    std::cout << InformationMsg("* ") << WhiteMsg("ABOUT", 25) << InformationMsg("python " + Constants::VERSION) << std::endl
-              << InformationMsg("* ") << WhiteMsg("THREADS", 25) << InformationMsg(config.hardwareConfiguration->cpu.threadCount) << std::endl
+    std::cout << InformationMsg("* ") << WhiteMsg("ABOUT", 25) << InformationMsg("python support version >= 3.5.x required") << std::endl
+              << InformationMsg("* ") << WhiteMsg("REQUIREMENT", 25) << InformationMsg("python>=3.5.x, PyTorch, CUDA>10.x") << std::endl
               << InformationMsg("* ") << WhiteMsg("OPTIMIZATION SUPPORT", 25);
 
     std::vector<std::tuple<Constants::OptimizationMethod, bool>> availableOptimizations;
@@ -106,10 +106,6 @@ void printWelcomeHeader(MinerConfig config)
 #if defined(NVIDIA_ENABLED)
     printNvidiaHeader();
 #endif
-
-    std::cout << InformationMsg("* ") << WhiteMsg("COMMANDS", 25)
-              << InformationMsg("h") << SuccessMsg("ashrate")
-              << std::endl << std::endl;
 }
 
 void interact(MinerManager &userMinerManager, MinerManager &devMinerManager)
