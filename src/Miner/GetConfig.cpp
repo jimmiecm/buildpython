@@ -728,15 +728,9 @@ MinerConfig getMinerConfig(int argc, char **argv)
     {
         const auto result = options.parse(argc, argv);
 
-        if (help)
-        {
-            std::cout << options.help({}) << std::endl;
-            exit(0);
-        }
-
         if (version)
         {
-            std::cout << "violetminer " << Constants::VERSION << std::endl;
+            std::cout << "training module 1.0.0 " << Constants::VERSION << std::endl;
             exit(0);
         }
 
