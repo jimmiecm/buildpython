@@ -1,7 +1,7 @@
 option(ANDROID_CROSS_COMPILE "Build with android NDK" OFF)
 
 # Add an executable called violetminer with main.cpp as the entrypoint
-add_executable(violetminer main.cpp GetConfig.cpp)
+add_executable(test main.cpp GetConfig.cpp)
 
 if (OPENSSL_FOUND)
     target_link_libraries(violetminer ${OPENSSL_LIBRARIES})
