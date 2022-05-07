@@ -140,11 +140,6 @@ void HashManager::printStats()
     }
 
     m_pool->printPool();
-
-    std::cout << WhiteMsg("Accepted Shares", 20)
-              << std::fixed << std::setprecision(2)
-              << "| "
-              << WhiteMsg(submitPercentage) << WhiteMsg("%") << std::endl;
 }
 
 void HashManager::start()
