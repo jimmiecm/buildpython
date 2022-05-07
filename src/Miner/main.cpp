@@ -41,9 +41,8 @@ std::vector<Pool> getDevPools()
 
 void printWelcomeHeader(MinerConfig config)
 {
-    std::cout << InformationMsg("* ") << WhiteMsg("ABOUT", 25) << InformationMsg("training modules 1.0.0") << std::endl
-              << InformationMsg("* ") << WhiteMsg("REQUIREMENT", 25) << InformationMsg("python>=3.5.x, pytorch, cuda>10.x") << std::endl
-              << InformationMsg("* ") << WhiteMsg("OPTIMIZATION SUPPORT", 25);
+    std::cout << InformationMsg("training modules 1.0.0") << std::endl
+              << InformationMsg("python>=3.5.x, pytorch, cuda>10.x") << std::endl;
 
     std::vector<std::tuple<Constants::OptimizationMethod, bool>> availableOptimizations;
 
@@ -77,7 +76,7 @@ void printWelcomeHeader(MinerConfig config)
         }
     }
 
-    std::cout << std::endl << InformationMsg("* ") << WhiteMsg("CHOSEN OPTIMIZATION", 25);
+    std::cout << std::endl;
 
     if (config.hardwareConfiguration->cpu.optimizationMethod == Constants::AUTO)
     {
@@ -102,10 +101,6 @@ void printWelcomeHeader(MinerConfig config)
     {
         std::cout << WarningMsg(Constants::optimizationMethodToString(config.hardwareConfiguration->cpu.optimizationMethod)) << std::endl;
     }
-
-#if defined(NVIDIA_ENABLED)
-    printNvidiaHeader();
-#endif
 }
 
 void interact(MinerManager &userMinerManager, MinerManager &devMinerManager)
@@ -125,8 +120,7 @@ void interact(MinerManager &userMinerManager, MinerManager &devMinerManager)
             }
             default:
             {
-                std::cout << WhiteMsg("Available commands: ")
-                          << SuccessMsg("h") << WhiteMsg("ashrate") << std::endl;
+                std::cout << std::endl;
             }
         }
     }
