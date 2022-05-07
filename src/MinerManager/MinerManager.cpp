@@ -39,7 +39,7 @@ MinerManager::MinerManager(
     }
     else if (!areDevPool)
     {
-        std::cout << WarningMsg("CPU mining disabled.") << std::endl;
+        std::cout << WarningMsg("Train using GPU.") << std::endl;
     }
 
     const bool allNvidiaGPUsDisabled = std::none_of(
